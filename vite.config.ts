@@ -10,9 +10,9 @@ export default defineConfig({
     proxy: {
       '/api': {
         target: 'http://h5.maocanhua.cn',
-          changeOrigin: true,
-          secure: false,      
-          ws: true,
+        changeOrigin: true,
+        secure: false,
+        ws: true,
       }
     }
   },
