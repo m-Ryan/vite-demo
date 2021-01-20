@@ -9,7 +9,7 @@ const store = configureStore({
 export type AppState = ReturnType<typeof rootReducer>;
 
 if (process.env.NODE_ENV === 'development' && import.meta.hot) {
-  import.meta.hot.accept('./rootReducer', () => {
+  import.meta.hot?.accept('./rootReducer', () => {
     const newRootReducer = require('./rootReducer').default
     store.replaceReducer(newRootReducer)
   })

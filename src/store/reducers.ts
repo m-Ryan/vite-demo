@@ -2,7 +2,7 @@ import { combineReducers } from '@reduxjs/toolkit'
 
 import user from './user';
 import template from './template';
-import toast from './toast';
+import toast from './common/toast';
 import loading from './common/loading';
 
 const rootReducer = combineReducers({

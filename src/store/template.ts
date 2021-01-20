@@ -1,6 +1,5 @@
 import { article, IArticle } from '@/services/article';
-import { createSlice } from '@reduxjs/toolkit';
-import { createEffectThunk } from './common/createEffectThunk';
+import { delay } from '@/util/delay';
 import createSliceState from './common/createSliceState';
 
 export const TEMPLATE_FETCH_VY_ID = 'template/fetchByIdStatus';
@@ -13,8 +12,8 @@ export default createSliceState({
   },
   effects: {
     fetchTemplateById: async (state, id: number) => {
-      console.log(state, id)
       const data = await article.getArticle(id);
+      await delay()
       return data;
     }
   }

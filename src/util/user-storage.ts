@@ -13,12 +13,17 @@ export class UserStorage {
         account = JSON.parse(sesseionAccout);
       } else {
 
-        const { data } = await axios.get<IUser>(`/api/user/user/info`, {
-          headers: {
-            authorization: token
-          }
-        });
-        account = data;
+        try {
+          const { data } = await axios.get<IUser>(`/api/user/user/info`, {
+            headers: {
+              authorization: token
+            }
+          });
+          account = data;
+        } catch (error) {
+          this.logout();
+          return this.getAccount();
+        }
       }
     } else {
 
@@ -46,6 +51,5 @@ export class UserStorage {
   static logout() {
     window.localStorage.setItem(tokenKey, '');
     window.sessionStorage.setItem(sessionKey, '');
-    window.location.assign(LOGIN_ADDRESS);
   }
 }

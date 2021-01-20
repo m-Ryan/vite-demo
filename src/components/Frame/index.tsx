@@ -1,6 +1,6 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import { UserStorage } from '@/util/user-storage';
-// import { message } from 'antd';
+import { message } from 'antd';
 
 export default function Frame({ children }: { children: React.ReactNode; }) {
   const [hasLogin, setHasLogin] = useState(false);
@@ -10,7 +10,7 @@ export default function Frame({ children }: { children: React.ReactNode; }) {
       .then(() => {
         setHasLogin(true);
       })
-      // .catch(err => message.error(err.message));
+      .catch(err => message.error(err.message));
   }, []);
 
   if (!hasLogin) return null;

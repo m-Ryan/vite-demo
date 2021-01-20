@@ -7,14 +7,14 @@ export interface Toast {
   duration: number
 }
 
-let idIndex = 0;
+let idx = 0;
 export default createSlice({
   name: 'toast',
   initialState: [] as Toast[],
   reducers: {
     add: (state, action: { payload: Omit<Toast, 'id'> }) => {
       state.push({
-        id: idIndex++,
+        id: idx++,
         ...action.payload
       });
     },
